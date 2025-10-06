@@ -101,6 +101,6 @@ Frameworks (E.g. Below.) improve technicality of Yara rules.
 | What does Loki classify this file as? | `DESCRIPTION: Web Shell - file metaslsoft.php`<br><br><i>Web Shell</i> |
 | Based on the output, what string within the Yara rule did it match on? | `MATCHES: Str1: $buff .= "<tr><td><a href=\\"?d=".$pwd."\\">[ $folder ]</a></td><td>LINK</t`<br><br><i>Str1</i>|
 | What is the name and version of this hack tool? | `FIRST_BYTES: 3c3f7068700a2f2a0a09623337346b20322e320a / <?php/*b374k 2.2`<br><br><i>b374k 2.2</i> |
-| Inspect the actual Yara file that flagged file 1. Within this rule, how many strings are there to flag this file? | `grep -RIn 'webshell' . -l`<br>`nano thor-webshells.yar`<br><br>or<br><br>`grep -n -A12 "metaslsoft" thor-webshells.yar`<br><br><i>1</i>|
-| Scan file 2. Does Loki detect this file as suspicious/malicious or benign? | |
-| Inspect file 2. What is the name and version of this web shell? | |
+| Inspect the actual Yara file that flagged file 1. Within this rule, how many strings are there to flag this file? | `grep -RIn 'webshell' . -l`<br>`nano thor-webshells.yar`<br>`FN+F6` (Don't do `CTRL+W`; closes browser window.)<br><br>or<br><br>`grep -n -A12 "metaslsoft" thor-webshells.yar`<br><br><i>1</i>|
+| Scan file 2. Does Loki detect this file as suspicious/malicious or benign? | Go the the directory of file 2.<br><br>`python ../../tools/Loki/loki.py -p .`<br><br>`[RESULT] SYSTEM SEEMS TO BE CLEAN.`<br><br><i>Benign</i>|
+| Inspect file 2. What is the name and version of this web shell? | `nano 1ndex.php`<br><br>`b374k shell 3.2.3`<br><br><i>b374k 3.2.3</i> |
