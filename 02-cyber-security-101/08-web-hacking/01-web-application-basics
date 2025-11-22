@@ -1,0 +1,91 @@
+# Web Application Basics
+Learn basics of web applicaitons: HTTP, URLs, request methods, response codes and headers.
+
+## Content:
+<br>[Task 1: Introduction](#task-1-introduction)
+<br>[Task 2: Web Application Review](#task-2-web-application-review)
+<br>[Task 3: Uniform Resource Locator](#task-3-uniform-resource-locator)
+<br>[Task 4: HTTP Messages](#task-4-http-messages)
+<br>[Task 5: HTTP Request - Request Line and Methods](#task-5-http-request---request-line-and-methods)
+<br>[Task 6: HTTP Request - Headers and Body](#task-6-http-request---headers-and-body)
+<br>[To note](#to-note)
+
+## Task 1: Introduction
+<ul>
+<li>Understand what a web app is and how it runs in web browser.</li>
+<li>Break down components of URL and see how it helps access web resources.</li>
+<li>Learn how HTTP requests and responses work.</li>
+<li>Get familiar with different types of HTTP request methods.</li>
+<li>Understand what different HTTP response codes mean.</li>
+<li>Check out how HTTP headers work and why they matter for security.</li>
+</ul>
+
+## Task 2: Web Application Review
+
+| Component | Description |
+|-----------|-------------|
+| Front end | HTML, CSS, Javascript |
+| Back end | Database, Infrastructure, WAF |
+
+<u><b>THM Questions</b></u>
+| Question | Answer |
+|---------|---------|
+| <i>Which component on a computer is responsible for hosting and delivering content for web applications?</i> | web server |
+| <i>Which tool is used to access and interact with web applications?</li> | web browser |
+| <i>Which component acts as a protective layer, filtering incoming traffic to block malicious attacks, and ensuring the security of the the web application?</li> | web application firewall |
+
+## Task 3: Uniform Resource Locator
+
+| Component | Description | Security Risk |
+|-----------|-------------|---------------|
+| Scheme | Protocol used to access website. | HTTPS encrypts connection. | 
+| User | Some URLs include user's login details (usu a username) for sites that require authentication. | Hardly used because not secure to have login details in URL. |
+| Host/ Domain | Tells you which website you are accessing. Has to be unique and registered through domain registrars. | Be careful of typosquatting; used in phishing attacks. |
+| Port |  Helps direct browser to right service on web server; tells server which 'doorway' to use for communication. Port number ranges from 1-65535. | |
+| Path |  Points to specific file or page on server trying to access. | Websites need to secure these paths to make sure only authorised users can access sensitive resources. |
+| Query String | Part of URL that starts with a question mark. Often used for things like search terms or form inputs. | Can be modified by users. Need to handle them securely to prevent attacks like injections. |
+| Fragment | Starts with a hash and points to a specific section of a webpage, e.g. jump to a particular heading or table. | Can be modified by users. Need to check and clean up data here to prevent attacks like injections. |
+
+<u><b>THM Questions</b></u>
+| Question | Answer |
+|---------|---------|
+| <i>Which protocol provides encrypted communication to ensure secure data transmission between a web browser and a web server?</i> | https |
+| <i>What term describes the practice of registering domain names that are misspelt variations of popular websites to exploit user errors and potentially engage in fraudulent activities?</li> | Typosquatting |
+| <i>What part of a URL is used to pass additional information, such as search terms or form inputs, to the web server?</li> | Query String |
+
+## Task 4: HTTP Messages
+
+| Component | Description |
+|-----------|-------------|
+| HTTP messages | Packets of data exchanged between a user (client) and web server. Need to know because: (1) Foundation of how web apps communicate. If structured properly, everything works smoothly. (2) Help diagnose issues in web comm. (3) Help implement strong security measures to protect data during transmission. |
+| HTTP requests | Sent by user to trigger actions on web app. |
+| HTTP responses | Sent by server in response to user's request. |
+| Msg format - Start line | Message intro to tell you what kind of message is being sent, e.g. request from user or response from server. Also gives impt details about how message should be handled. |
+| Msg format - Headers | Made up of key-value pairs that provide extra info about HTTP message. Give instructions to both client and server handling request or response. Cover things like security, cotnent typoes and makes sure everything goes smoothly in the communication. |
+| Msg format - Empty line | A little divider that separates the header from the body. Essential because it shows where header stops and actual message content begins. Without this empty line, message might get messed up and client or server could misinterpret it and cause errors. |
+| Msg format - Body | Where actual data is stored. In request, body might include data user wants to send to server (e.g. form data). In response, it's where server puts content that users requested (e.g. webpage or API data). |
+
+<u><b>THM Questions</b></u>
+| Question | Answer |
+|---------|---------|
+| <i>Which HTTP message is returned by the web server after processing a client's request?</i> | HTTP response |
+| <i>What follows the headers in an HTTP message?</li> | Empty line |
+
+## Task 5: HTTP Request - Request Line and Methods
+
+<u><b>THM Questions</b></u>
+| Question | Answer |
+|---------|---------|
+| <i>Which HTTP protocol version became widely adopted and remains the most commonly used version for web communication, known for introducing features like persistent connections and chunked transfer encoding?</i> | HTTP/1.1 |
+| <i>Which HTTP request method describes the communication options for the target resource, allowing clients to determine which HTTP methods are supported by the web server?</li> | Options |
+| <i>In an HTTP request, which component specifies the specific resource or endpoint on the web server that the client is requesting, typically appearing after the domain name in the URL?</li> | URL Path |
+
+## Task 6: HTTP Request - Headers and Body
+<u><b>THM Questions</b></u>
+| Question | Answer |
+|---------|---------|
+| <i>Which HTTP request header specifies the domain name of the web server to which the request is being sent?</i> | Host |
+| <i>What is the default content type for form submissions in an HTTP request where the data is encoded as key=value pairs in a query string format?</li> | application/x-www-form-urlencoded |
+| <i>Which part of an HTTP request contains additional information like host, user agent, and content type, guiding how the web server should process the request?</li> | Request Headers |
+
+## To note
