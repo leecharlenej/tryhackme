@@ -8,6 +8,9 @@ Learn basics of web applicaitons: HTTP, URLs, request methods, response codes an
 <br>[Task 4: HTTP Messages](#task-4-http-messages)
 <br>[Task 5: HTTP Request - Request Line and Methods](#task-5-http-request---request-line-and-methods)
 <br>[Task 6: HTTP Request - Headers and Body](#task-6-http-request---headers-and-body)
+<br>[Task 7: HTTP Response - Status Line and Status Codes](#task-7-http-response---status-line-and-status-codes)
+<br>[Task 8: HTTP Response - Headers and Body](#task-8-http-response---headers-and-body)
+<br>[Task 9: Security Headers](#task-9-security-headers)
 <br>[To note](#to-note)
 
 ## Task 1: Introduction
@@ -87,5 +90,55 @@ Learn basics of web applicaitons: HTTP, URLs, request methods, response codes an
 | <i>Which HTTP request header specifies the domain name of the web server to which the request is being sent?</i> | Host |
 | <i>What is the default content type for form submissions in an HTTP request where the data is encoded as key=value pairs in a query string format?</li> | application/x-www-form-urlencoded |
 | <i>Which part of an HTTP request contains additional information like host, user agent, and content type, guiding how the web server should process the request?</li> | Request Headers |
+
+## Task 7: HTTP Response - Status Line and Status Codes
+<ul>
+<li><b>Status Line</b> (first line) = HTTP Version + Status Code + Reason Phrase</li>
+</ul>
+
+<u><b>THM Questions</b></u>
+| Question | Answer |
+|---------|---------|
+| <i>What part of an HTTP response provides the HTTP version, status code, and a brief explanation of the response's outcome?</i> | Status Line |
+| <i>Which category of HTTP response codes indicates that the web server encountered an internal issue or is unable to fulfil the client's request?</i> | Server Error Responses |
+| <i>Which HTTP status code indicates that the requested resource could not be found on the web server?</i> | 404 |
+
+## Task 8: HTTP Response - Headers and Body
+<ul>
+<li><b>Response Header:</b> Key-value pairs that provide info about the response and tell client (usually, the browser) how to handle it.</li>
+<li><b>Response Body:</b> Where the actual data (e.g. HTML, JSON, images) lives; data that the server sends back to client.
+</ul>
+
+<u><b>THM Questions</b></u>
+| Question | Answer |
+|---------|---------|
+| <i>Which HTTP response header can reveal information about the web server's software and version, potentially exposing it to security risks if not removed?</i> | Server |
+| <i>Which flag should be added to cookies in the Set-Cookie HTTP response header to ensure they are only transmitted over HTTPS, protecting them from being exposed during unencrypted transmissions?</i> | secure |
+| <i>Which flag should be added to cookies in the Set-Cookie HTTP response header to prevent them from being accessed via JavaScript, thereby enhancing security against XSS attacks?</i> | HTTPOnly |
+
+
+## Task 9: Security Headers
+<ul>
+<li><b>Content-Security-Policy (CSP):</b> For adminstrators to say what domains or sources are considered safe and can be used to load resources; <code>default-src</code>, <code>script-src</code>, <code>style-src</code>.</li>
+<li><b>Strict-transport-Security (HSTS):</b> Ensures that webs browsers are always connected over HTTPS. </li>
+<li><b>X-Content-Type-Options:</b> Instructs browsers not to guess the MIME time of a resource but only use the COntent-Type header.</li>
+<li><b>Referrer-Policy:</b> Controls amount of info sent to destination web server when user is redirected from source web server, e.g. when he clicks a hyperlink. Header is available to allow web administrator to control what info is shared.</li>
+</ul>
+
+<u><b>THM Questions</b></u>
+| Question | Answer |
+|---------|---------|
+| <i>In a Content Security Policy (CSP) configuration, which property can be set to define where scripts can be loaded from?</i> | script-src |
+| <i>When configuring the Strict-Transport-Security (HSTS) header to ensure that all subdomains of a site also use HTTPS, which directive should be included to apply the security policy to both the main domain and its subdomains?</i> | includeSubDomains |
+| <i>Which HTTP header directive is used to prevent browsers from interpreting files as a different MIME type than what is specified by the server, thereby mitigating content type sniffing attacks?</i> | nosniff |
+
+## Task 10: Practical Task - Making HTTP Requests
+
+<u><b>THM Questions</b></u>
+| Question | Answer |
+|---------|---------|
+| <i>Make a GET request to /api/users. What is the flag?</i><br>THM{YOU_HAVE_JUST_FOUND_THE_USER_LIST} | Change URL to https://tryhackme.com/api/users |
+| <i>Make a POST request to /api/user/2 and update the country of Bob from UK to US. What is the flag?</i><br>THM{YOU_HAVE_MODIFIED_THE_USER_DATA} | Change method to POST.<br>Change URL to https://tryhackme.com/api/user/2.<br>Add key-value pair: country - US |
+| <i>Make a DELETE request to /api/user/1 to delete the user. What is the flag?</i><br>THM{YOU_HAVE_JUST_DELETED_A_USER} | Change method to DELETE.<br>Change URL to https://tryhackme.com/api/user/1 |
 
 ## To note
